@@ -1,0 +1,26 @@
+{% extends 'dashboard-base.html' %}
+
+{% load static %}
+
+{% block content %} 
+
+    <div class="col-lg-4 position-sticky">
+        <div class="card mb-4">
+            <div class="card-header">Preview</div>
+            <div class="card-body">
+
+            {% for post in object_list %}
+                <img src="{{ post.PreviewImage.url }}" style="width:100%" alt="">
+            {% endfor %}    
+                
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">Categories</div>
+            <div class="card-body">
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

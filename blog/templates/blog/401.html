@@ -1,0 +1,41 @@
+{% extends 'dashboard-base.html' %}
+
+{% load static %}
+
+{% block title %}
+
+401 | Not authorised
+{% endblock title %}
+
+{% block content %}
+
+<div id="layoutError">
+    <div id="layoutError_content">
+        <main>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="text-center mt-4">
+                            <img class="img-fluid p-4" src="{% static 'assets/img/freepik/401-error-unauthorized-pana.svg' %}" alt />
+                            <p class="lead">Access to this resource is denied.</p>
+                            <a class="btn btn-primary btn-sm" href="{% url 'home' %}">
+                                <i class="ml-0 mr-1" data-feather="home"></i>
+                                Home
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="{% url 'login' %}">
+                                <i class="ml-0 mr-1" data-feather="log-in"></i>
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div id="layoutError_footer">
+        {% include 'blog/footer.html' %}
+    </div>
+</div>
+
+
+{% endblock content %}

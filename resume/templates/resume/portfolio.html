@@ -1,0 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <title>Portfolio | Bukhosi Moyo Personal Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Template Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet">
+
+        <!-- Template CSS Files -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/preloader.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/circle.css' %}" rel="stylesheet">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/fm.revealator.jquery.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+        <!-- CSS Skin File -->
+        <link href="{% static 'css/skins/blue.css' %}" rel="stylesheet" >
+
+        <!-- Modernizr JS File -->
+        <script src="{% static 'js/modernizr.custom.js' %}"></script>
+    </head>
+    <body class="portfolio">
+
+        {% block content %}
+            <!-- Header Starts -->
+            <header class="header" id="navbar-collapse-toggle">
+                <!-- Fixed Navigation Starts -->
+                <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-once revealator-delay1">
+                    <li class="icon-box">
+                        <i class="fa fa-home"></i>
+                        <a href="{% url 'resume:home' %}">
+                            <h2>Home</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box ">
+                        <i class="fa fa-user"></i>
+                        <a href="{% url 'resume:about' %}">
+                            <h2>About</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box active">
+                        <i class="fa fa-briefcase"></i>
+                        <a href="{% url 'resume:portfolio' %}">
+                            <h2>Portfolio</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box">
+                        <i class="fa fa-comments"></i>
+                        <a href="#!">
+                            <h2>Blog</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box">
+                        <i class="fa fa-envelope-open"></i>
+                        <a href="{% url 'resume:contact' %}">
+                            <h2>Contact</h2>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Fixed Navigation Ends -->
+                <!-- Mobile Menu Starts -->
+                <nav role="navigation" class="d-block d-lg-none">
+                    <div id="menuToggle">
+                        <input type="checkbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <ul class="list-unstyled" id="menu">
+                            <li><a href="{% url 'resume:home' %}"><i class="fa fa-home"></i><span>Home</span></a></li>
+                            <li><a href="{% url 'resume:about' %}"><i class="fa fa-user"></i><span>About</span></a></li>
+                            <li class="active"><a href="{% url 'resume:portfolio' %}"><i class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
+                            <li><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                            <li><a href="{% url 'resume:contact' %}"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Mobile Menu Ends -->
+            </header>
+            <!-- Header Ends -->
+            <!-- Page Title Starts -->
+            <section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
+                <h1>my <span>portfolio</span></h1>
+                <span class="title-bg">works</span>
+            </section>
+            <!-- Page Title Ends -->
+            <!-- Main Content Starts -->
+            <section class="main-content text-center revealator-slideup revealator-once revealator-delay1">
+                <div id="grid-gallery" class="container grid-gallery">
+                    <!-- Portfolio Grid Starts -->
+                    <section class="grid-wrap">
+                        <ul class="row grid">
+                            <!-- Portfolio Item Starts -->
+                            {% for port in image_portfolio %}
+                                <li>
+                                    <figure>
+                                        <img src="{{ port.portfolio_image.url }}" alt="Portfolio Image" />
+                                        <div><span>{{ port.project_name }}</span></div>
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Ends -->
+                            <!-- Portfolio Item Starts -->
+                            {% for yv in youtube_portfolio %}
+                                <li>
+                                    <figure>
+                                        <img src="{{yv.preview_image.url}}" alt="Portolio Image" />
+                                        <div><span>{{yv.project_name}}</span></div>
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Ends -->
+                            <!-- Portfolio Item Starts -->
+                            {% for s in slider_portfolio %}
+                                <li>
+                                    <figure>
+                                        <img src="{{s.preview_image.url}}" alt="Portolio Image" />
+                                        <div><span>{{s.project_name}}</span></div>
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Ends -->
+                            <!-- Portfolio Item Starts -->
+                            {% for lv in local_video_portfolio %}
+                                <li>
+                                    <figure>
+                                        <img src="{{lv.preview_image.url}}" alt="Portolio Image" />
+                                        <div><span>{{lv.project_name}}</span></div>
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Ends -->
+                            
+                            <!-- Portfolio Item Ends -->
+                        </ul>
+                    </section>
+                    <!-- Portfolio Grid Ends -->
+                    <!-- Portfolio Details Starts -->
+                    <section class="slideshow">
+                        <ul>
+                            <!-- Portfolio Item Detail Starts -->
+                            {% for port in image_portfolio %}
+                                <li>
+                                    <figure>
+                                        <!-- Project Details Starts -->
+                                        <figcaption>
+                                            <h3>{{port.project_name}}</h3>
+                                            <div class="row open-sans-font">
+                                                <div class="col-12 col-sm-6 mb-2">
+                                                    <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase">{{port.project_name}}</span>
+                                                </div>
+                                                <div class="col-12 col-sm-6 mb-2">
+                                                    <i class="fa fa-user-o pr-2"></i><span class="project-label">Client </span>: <span class="ft-wt-600 uppercase">{{port.client}}</span>
+                                                </div>
+                                                <div class="col-12 col-sm-6 mb-2">
+                                                    <i class="fa fa-code pr-2"></i><span class="project-label">Langages </span>: <span class="ft-wt-600 uppercase">{{port.technologies}}</span>
+                                                </div>
+                                                <div class="col-12 col-sm-6 mb-2">
+                                                    <i class="fa fa-external-link pr-2"></i><span class="project-label">Preview </span>: <span class="ft-wt-600 uppercase"><a href="{{port.preview_link}}" target="_blank">{{port.preview_link}}</a></span>
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                        <!-- Project Details Ends -->
+                                        <!-- Main Project Content Starts -->
+                                        <img src="{{port.portfolio_image.url}}" alt="Portolio Image" />
+                                        <!-- Main Project Content Ends -->
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Detail Ends -->
+                            <!-- Portfolio Item Detail Starts -->
+                            {% for y in youtube_portfolio %}
+                            <li>
+                                <figure>
+                                    <!-- Project Details Starts -->
+                                    <figcaption>
+                                        <h3>{{yv.project_name}}</h3>
+                                        <div class="row open-sans-font">
+                                            <div class="col-6 mb-2">
+                                                <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase">{{yv.project_name}}</span>
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <i class="fa fa-user-o pr-2"></i><span class="project-label">Client </span>: <span class="ft-wt-600 uppercase">{{y.client}}</span>
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <i class="fa fa-code pr-2"></i><span class="project-label">Langages </span>: <span class="ft-wt-600 uppercase">{{y.technologies}}</span>
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <i class="fa fa-external-link pr-2"></i><span class="project-label">Preview </span>: <span class="ft-wt-600 uppercase"><a href="{{ y.preview_link }}" target="_blank">{{ y.preview_link }}</a></span>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                    <!-- Project Details Ends -->
+                                    <!-- Main Project Content Starts -->
+                                    <div class="videocontainer">
+                                        {{y.youtube_imbed_code}}
+                                    </div>
+                                    <!-- Main Project Content Ends -->
+                                </figure>
+                            </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Detail Ends -->
+                            <!-- Portfolio Item Detail Starts -->
+                            {% for s in slider_portfolio %}
+                                <li>
+                                    <figure>
+                                        <!-- Project Details Starts -->
+                                        <figcaption>
+                                            <h3>{{s.project_name}}</h3>
+                                            <div class="row open-sans-font">
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase">{{s.project_name}}</span>
+                                                </div>
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-user-o pr-2"></i><span class="project-label">Client </span>: <span class="ft-wt-600 uppercase">{{s.client}}</span>
+                                                </div>
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-code pr-2"></i><span class="project-label">Langages </span>: <span class="ft-wt-600 uppercase">{{s.technologies}}</span>
+                                                </div>
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-external-link pr-2"></i><span class="project-label">Preview </span>: <span class="ft-wt-600 uppercase"><a href="{{s.preview_link}}" target="_blank">{{s.preview_link|truncatewords:20}}</a></span>
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                        <!-- Project Details Ends -->
+                                        <!-- Main Project Content Starts -->
+                                        <div id="slider" class="carousel slide portfolio-slider" data-ride="carousel" data-interval="false">
+                                            <ol class="carousel-indicators">
+                                                <li data-target="#slider" data-slide-to="0" class="active"></li>
+                                                <li data-target="#slider" data-slide-to="1"></li>
+                                                <li data-target="#slider" data-slide-to="2"></li>
+                                                <li data-target="#slider" data-slide-to="3"></li>
+                                            </ol>
+                                            <!-- The slideshow -->
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="{{s.portfolio_image1.url}}" alt="slide 1">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="{{s.portfolio_image2.url}}" alt="slide 2">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="{{s.portfolio_image3.url}}" alt="slide 3">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="{{s.portfolio_image4.url}}" alt="slide 4">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Main Project Content Ends -->
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Detail Ends -->
+                            <!-- Portfolio Item Detail Starts -->
+                            {% for lv in local_video_portfolio %}
+                                <li>
+                                    <figure>
+                                        <!-- Project Details Starts -->
+                                        <figcaption>
+                                            <h3>{{lv.project_name}}</h3>
+                                            <div class="row open-sans-font">
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-file-text-o pr-2"></i><span class="project-label">Project </span>: <span class="ft-wt-600 uppercase">{{lv.project_name}}</span>
+                                                </div>
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-user-o pr-2"></i><span class="project-label">Client </span>: <span class="ft-wt-600 uppercase">{{lv.client}}</span>
+                                                </div>
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-code pr-2"></i><span class="project-label">Langages </span>: <span class="ft-wt-600 uppercase">{{lv.technologies}}</span>
+                                                </div>
+                                                <div class="col-6 mb-2">
+                                                    <i class="fa fa-external-link pr-2"></i><span class="project-label">Preview </span>: <span class="ft-wt-600 uppercase"><a href="{{ lv.preview_link }}" target="_blank">{{ lv.preview_link }}</a></span>
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                        <!-- Project Details Ends -->
+                                        <!-- Main Project Content Starts -->
+                                        <video id="video" class="responsive-video" controls poster="{{lv.project_image.url}}">
+                                            <source src="{{lv.video_file.url}}" type="video/mp4">
+                                        </video>
+                                        <!-- Main Project Content Ends -->
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                            <!-- Portfolio Item Detail Ends -->
+                        </ul>
+                        <!-- Portfolio Navigation Starts -->
+                        <nav>
+                            <span class="icon nav-prev"><img src="{% static 'img/projects/navigation/left-arrow.png' %}" alt="previous"></span>
+                            <span class="icon nav-next"><img src="{% static 'img/projects/navigation/right-arrow.png' %}" alt="next"></span>
+                            <span class="nav-close"><img src="{% static 'img/projects/navigation/close-button.png' %}" alt="close"> </span>
+                        </nav>
+                        <!-- Portfolio Navigation Ends -->
+                    </section>
+                </div>
+            </section>
+            <!-- Main Content Ends -->
+        {% endblock content %}
+        <!-- Template JS Files -->
+        <script src="{% static 'js/jquery-3.5.0.min.js' %} "></script>
+        <script src="{% static 'js/preloader.min.js' %}"></script>
+        <script src="{% static 'js/fm.revealator.jquery.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/classie.js' %}"></script>
+        <script src="{% static 'js/cbpGridGallery.js' %}"></script>
+        <script src="{% static 'js/jquery.hoverdir.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>
+

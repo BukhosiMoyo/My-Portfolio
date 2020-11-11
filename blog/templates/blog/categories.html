@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Blog - Bukhosi Moyo</title>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Template Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet">
+
+    <!-- Template CSS Files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="{% static 'css/preloader.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/circle.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/fm.revealator.jquery.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <!-- CSS Skin File -->
+    <link href="{% static 'css/skins/blue.css' %}" rel="stylesheet">
+
+    
+
+    <!-- Modernizr JS File -->
+    <script src="{% static 'js/modernizr.custom.js' %}"></script>
+
+    
+    </style>
+</head>
+
+    <body class="blog">
+
+        {% block content %}
+
+
+
+        <header class="header" id="navbar-collapse-toggle">
+    <!-- Fixed Navigation Starts -->
+    <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-once revealator-delay1">
+        <li class="icon-box">
+                <i class="fa fa-home"></i>
+                <a href="{% url 'home' %}">
+                    <h2>Home</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-user"></i>
+                <a href="{% url 'about' %}">
+                    <h2>About</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-briefcase"></i>
+                <a href="{% url 'portfolio' %}">
+                    <h2>Portfolio</h2>
+                </a>
+            </li>
+            <li class="icon-box active">
+                <i class="fa fa-comments"></i>
+                <a href="{% url 'blog' %}">
+                    <h2>Blog</h2>
+                </a>
+            </li>
+            <li class="icon-box">
+                <i class="fa fa-envelope-open"></i>
+                <a href="{% url 'contact' %}">
+                    <h2>Contact</h2>
+                </a>
+            </li>
+    </ul>
+    <!-- Fixed Navigation Ends -->
+    <!-- Mobile Menu Starts -->
+    <nav role="navigation" class="d-block d-lg-none">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul class="list-unstyled" id="menu">
+                <li><a href="{% url 'home' %}"><i class="fa fa-home"></i><span>Home</span></a></li>
+                <li><a href="{% url 'about' %}"><i class="fa fa-user"></i><span>About</span></a></li>
+                <li><a href="{% url 'portfolio' %}"><i class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
+                <li class="active"><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                <li><a href="{% url 'contact' %}"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Mobile Menu Ends -->
+</header>
+<!-- Header Ends -->
+<!-- Page Title Starts -->
+<section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
+    <h1>my <span>blog</span></h1>
+    <span class="title-bg">posts</span>
+</section>
+
+<div class="container">
+
+    <h2 class="mb-4"> <strong> Viewing posts for {{ cat }} </strong> </h2>
+    <hr />
+
+</div>
+<!-- Page Title Ends -->
+<!-- Main Content Starts -->
+<section class="main-content revealator-slideup revealator-once revealator-delay1">
+    <div class="container">
+        <!-- Articles Starts -->
+        <div class="row">
+            <!-- Article Starts -->
+            {% for post in category_posts %}
+                <div class="col-12 col-md-6 col-lg-6 mb-30 " style="flex-wrap: wrap; flex: initial; ">
+                    <article class="post-container">
+                        <div class="post-thumb">
+                            <a href="#" class="card-post__category badge badge-pill badge-primary">{{post.category}}</a>
+                            <a href="{% url 'article' post.pk %}" class="d-block position-relative overflow-hidden">
+                                <img src="{{post.PreviewImage.url}}" class="img-fluid" alt="Blog Post" style="width: 100%; height:250px; object-fit: cover ">
+                            </a>
+                        </div>
+                        <div class="post-content ">
+                            <div class="entry-header">
+                                <h3><a href="{% url 'article' post.pk %}">{{post.title}}</a></h3>
+                            </div>
+                            <div class="entry-content open-sans-font ">
+                                <p>{{post.body|slice:':160'|safe}}... <strong> <a href="{% url 'article' post.pk %}">[Readmore]</a> </strong>
+                                </p>
+                            </div>
+                            <hr>
+
+                            <div>
+                                ....
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+            <!-- Article Ends -->
+            <!-- Article Starts -->
+            
+            <!-- Pagination Starts -->
+            <div class="col-12 mt-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center mb-0">
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Pagination Ends -->
+        </div>
+        <!-- Articles Ends -->
+    </div>
+
+</section>
+
+
+        {% endblock content %}
+
+        <!-- Template JS Files -->
+        <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+        <script src="{% static 'js/styleswitcher.js' %}"></script>
+        <script src="{% static 'js/preloader.min.js' %}"></script>
+        <script src="{% static 'js/fm.revealator.jquery.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/classie.js' %}"></script>
+        <script src="{% static 'js/cbpGridGallery.js' %}"></script>
+        <script src="{% static 'js/jquery.hoverdir.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>

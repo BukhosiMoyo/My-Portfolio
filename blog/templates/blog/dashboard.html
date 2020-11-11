@@ -1,0 +1,190 @@
+{% extends 'dashboard-base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    {% if user.is_authenticated %}
+        <!--The navbar begins here-->
+        <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
+            <a class="navbar-brand" href="{% url 'dashboard' %}">Portfolio Admin</a>
+            <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+            <ul class="navbar-nav align-items-center ml-auto">
+                <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
+                        <h6 class="dropdown-header dropdown-notifications-header">
+                            <i class="mr-2" data-feather="bell"></i>
+                            Alerts Center
+                        </h6>
+                        
+                        <a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
+                        <h6 class="dropdown-header dropdown-notifications-header">
+                            <i class="mr-2" data-feather="mail"></i>
+                            Message Center
+                        </h6>
+                        
+                        <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown no-caret mr-2 dropdown-user">
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="request.user.person.profile_pic.url"/></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                        <h6 class="dropdown-header d-flex align-items-center">
+                            <img class="dropdown-user-img" src="#" />
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-details-name">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                                <div class="dropdown-user-details-email">{{ request.user.email }}</div>
+                            </div>
+                        </h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#!">
+                            <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
+                            Account
+                        </a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">
+                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                            Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--The navbar ends here-->
+
+        <!--The side bar begins here-->
+        <div id="layoutSidenav">
+            
+                <!--Begin::Sidebar-->
+                {% include 'blog/sidebar.html' %}
+                <!--End::Sidebar-->
+
+            <!-- Main Content:: Begin-->
+            <div id="layoutSidenav_content">
+                <main>
+                    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+                        <div class="container">
+                            <div class="page-header-content pt-4">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-auto mt-4">
+                                        <h1 class="page-header-title">
+                                            <div class="page-header-icon"><i data-feather="activity"></i></div>
+                                            Welcome back, {{ request.user.first_name }} {{ request.user.last_name }}
+                                        </h1>
+                                        <div class="page-header-subtitle">It&apos;s time to get started! View new opportunities now</div>
+                                    </div>
+                                    <div class="col-12 col-xl-auto mt-4">
+                                        <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">
+                                            <i class="mr-2 text-primary" data-feather="calendar"></i>
+                                            <span></span>
+                                            <i class="ml-1" data-feather="chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <!-- Main page content-->
+                    <div class="container mt-n10">
+                        <!-- Example Colored Cards for Dashboard Demo-->
+                        <div class="row">
+                            <div class="col-xxl-3 col-lg-3">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="mr-3">
+                                                <div class="text-white-75 small">Posts (Total)</div>
+                                                <div class="text-lg font-weight-bold"> 5678</div>
+                                            </div>
+                                            <i class="feather-xl text-white-50" data-feather="message-circle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                      <!--{% for portfolio in object_list %}
+                                            <a class="small text-white stretched-link" href="{% url 'portfolio-edit' portfolio.pk %}">Edit Portfolio</a>
+                                        {% endfor %} -->  
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-3">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="mr-3">
+                                                <div class="text-white-75 small">Comments (Total)</div>
+                                                <div class="text-lg font-weight-bold">40,000</div>
+                                            </div>
+                                            <i class="feather-xl text-white-50" data-feather="message-square"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Comments</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-3 col-lg-3">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="mr-3">
+                                                <div class="text-white-75 small">Page Views (Total)</div>
+                                                <div class="text-lg font-weight-bold">215,000</div>
+                                            </div>
+                                            <i class="feather-xl text-white-50" data-feather="eye"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Views</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-xxl-3 col-lg-3">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="mr-3">
+                                                <div class="text-white-75 small">Pending Requests</div>
+                                                <div class="text-lg font-weight-bold">17</div>
+                                            </div>
+                                            <i class="feather-xl text-white-50" data-feather="clock"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Requests</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Example Charts for Dashboard Demo-->
+                    </div>
+                </main>
+                <!--Begin::Footer-->
+                {% include 'blog/footer.html' %}
+                <!--End::Footer-->
+            </div>
+            <!--Main COntent::End-->
+        </div>
+        <!--The Side bar ends here-->
+
+
+
+    {% else %}
+        
+        {% include 'blog/401.html' %}
+            
+    {% endif %}
+
+
+
+
+{% endblock content %}

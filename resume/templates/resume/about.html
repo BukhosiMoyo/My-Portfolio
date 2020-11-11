@@ -1,0 +1,273 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>About | Bukhosi Moyo Personal Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Template Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700" rel="stylesheet">
+
+        <!-- Template CSS Files -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/preloader.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/circle.css' %}" rel="stylesheet">
+        <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/fm.revealator.jquery.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+
+        <!-- CSS Skin File -->
+        <link href="{% static 'css/skins/blue.css' %}" rel="stylesheet" >
+
+        <!-- Modernizr JS File -->
+        <script src="{% static 'js/modernizr.custom.js' %}"></script>
+    </head>
+    <body class="about">
+        {% block content %}
+            <!-- Header Starts -->
+            <header class="header about" id="navbar-collapse-toggle">
+                <!-- Fixed Navigation Starts -->
+                <ul class="icon-menu d-none d-lg-block revealator-slideup revealator-once revealator-delay1">
+                    <li class="icon-box">
+                        <i class="fa fa-home"></i>
+                        <a href="{% url 'resume:home' %}">
+                            <h2>Home</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box active">
+                        <i class="fa fa-user"></i>
+                        <a href="{% url 'resume:about' %}">
+                            <h2>About</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box">
+                        <i class="fa fa-briefcase"></i>
+                        <a href="{% url 'resume:portfolio' %}">
+                            <h2>Portfolio</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box">
+                        <i class="fa fa-comments"></i>
+                        <a href="#!">
+                            <h2>Blog</h2>
+                        </a>
+                    </li>
+                    <li class="icon-box">
+                        <i class="fa fa-envelope-open"></i>
+                        <a href="{% url 'resume:contact' %}">
+                            <h2>Contact</h2>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <!-- Fixed Navigation Ends -->
+                <!-- Mobile Menu Starts -->
+                <nav role="navigation" class="d-block d-lg-none">
+                    <div id="menuToggle">
+                        <input type="checkbox" />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <ul class="list-unstyled" id="menu">
+                            <li><a href="{% url 'resume:home' %}"><i class="fa fa-home"></i><span>Home</span></a></li>
+                            <li class="active"><a href="{% url 'resume:about' %}"><i class="fa fa-user"></i><span>About</span></a></li>
+                            <li><a href="{% url 'resume:portfolio' %}"><i class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
+                            <li><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                            <li><a href="{% url 'resume:contact' %}"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- Mobile Menu Ends -->
+            </header>
+            <!-- Header Ends -->
+            <!-- Page Title Starts -->
+            <section class="title-section text-left text-sm-center revealator-slideup revealator-once revealator-delay1">
+                <h1>ABOUT <span>ME</span></h1>
+                <span class="title-bg">Resume</span>
+            </section>
+            <!-- Page Title Ends -->
+            <!-- Main Content Starts -->
+            <section class="main-content revealator-slideup revealator-once revealator-delay1">
+                <div class="container">
+                    <div class="row">
+                        <!-- Personal Info Starts -->
+                        <div class="col-12 col-lg-5 col-xl-6">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3 class="text-uppercase custom-title mb-0 ft-wt-600">personal infos</h3>
+                                </div>
+                                <div class="col-12 d-block d-sm-none">
+                                    <img src="{{ persons.profilePicture.url }}" class="img-fluid main-img-mobile" alt="Bukhosi Moyo" />
+                                </div>
+                                <div class="col-6">
+                                    <ul class="about-list list-unstyled open-sans-font">
+                                        <li> <span class="title">Name :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{persons.display_name}}</span> </li>
+                                        <li> <span class="title">Age :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block"> {{ persons.age }} </span> </li>
+                                        <li> <span class="title">Health :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.health }}</span> </li>
+                                        <li> <span class="title">Country :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.nationality }}</span> </li>
+                                        <li> <span class="title">Freelance :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.freelance }}</span> </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+                                    <ul class="about-list list-unstyled open-sans-font">
+                                        <li> <span class="title">Address :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.address }}</span> </li>
+                                        <li> <span class="title">Phone :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.phone }}</span> </li>
+                                        <li> <span class="title">Email :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.email }}</span> </li>
+                                        <li> <span class="title">Skype :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.skype }}</span> </li>
+                                        <li> <span class="title">Langages :</span> <span class="value d-block d-sm-inline-block d-lg-block d-xl-inline-block">{{ persons.languages }}</span> </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <a href="{% static 'resume/resume.pdf' %}" download target="_blank" class="btn btn-download">Download Resume</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Personal Info Ends -->
+
+                        <!-- Boxes Starts -->
+                        <div class="col-12 col-lg-7 col-xl-6 mt-5 mt-lg-0">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="box-stats with-margin">
+                                        <h3 class="poppins-font position-relative">{{ stat.years_of_experience }}</h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">years of <span class="d-block">experience</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box-stats with-margin">
+                                        <h3 class="poppins-font position-relative">{{ stat.projects_completed }}</h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">completed <span class="d-block">projects</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box-stats">
+                                        <h3 class="poppins-font position-relative">{{ stat.happy_clients }}</h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">Happy<span class="d-block">clients</span></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="box-stats">
+                                        <h3 class="poppins-font position-relative">{{ stat.awards_won }}</h3>
+                                        <p class="open-sans-font m-0 position-relative text-uppercase">awards <span class="d-block">won</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Boxes Ends -->
+                    </div>
+                    
+                    <hr class="separator">
+                    
+                    <!-- Skills Starts -->
+                    <div class="row"> 
+                        <div class="col-12">
+                            <h3 class="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">My Skills</h3>
+                        </div>
+                        {% for skill in  skills %}
+                            <div class="col-6 col-md-3 mb-3 mb-sm-5">
+                                <div class="c100 p{{skill.level}}">
+                                    <span>{{skill.level}}%</span>
+                                    <div class="slice">
+                                        <div class="bar"></div>
+                                        <div class="fill"></div>
+                                    </div>
+                                </div>
+                                <h6 class="text-uppercase open-sans-font text-center mt-2 mt-sm-4">{{ skill.name }}  
+                                
+                                    {% if skill.name == 'Expert'%}
+
+                                        <span class="badge badge-pill badge-info" ><small> {{ skill.badge }} </small></span>
+
+                                    {% elif skill.name == 'Intermediate'%}
+
+                                        <span class="badge badge-pill badge-red"><small>  {{ skill.badge }} </small></span>
+
+                                    {% elif skill.name == 'Beginner'%}
+
+                                        <span class="badge badge-pill badge-danger"><small> {{ skill.badge }} </small></span>
+
+                                    {% else %}
+
+                                        <span class="badge badge-pill badge-primary"><small> {{ skill.badge }} </small></span>
+
+                                    {% endif %}
+                                </h6>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <!-- Skills Ends -->
+
+                    <hr class="separator mt-1">
+                    <!-- Experience & Education Starts -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="text-uppercase pb-5 mb-0 text-left text-sm-center custom-title ft-wt-600">Experience <span>&</span> Education</h3>
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="resume-box">
+                                <ul>
+                                    {% for exp in experiences %}
+                                        <li>
+                                            <div class="icon">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+                                            {% if  exp.current == False %}
+                                                <span class="time open-sans-font text-uppercase">{{ exp.start_date }}  - {{ exp.end_date }}</span>
+                                            {% else %}
+                                                <span class="time open-sans-font text-uppercase">{{ exp.start_date }}  - Present </span>
+                                            {%endif%}
+                                            <h5 class="poppins-font text-uppercase">{{exp.name}} <span class="place open-sans-font">{{exp.company}}</span></h5>
+                                            <p class="open-sans-font">{{exp.description}} </p>
+                                        </li>
+                                    {% endfor %}   
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="resume-box">
+                                <ul>
+                                    {% for edu in education %}
+                                        <li>
+                                            <div class="icon">
+                                                <i class="fa fa-graduation-cap"></i>
+                                            </div>
+                                            {% if  edu.current == False %}
+                                                <span class="time open-sans-font text-uppercase">{{ edu.start_date }}  - {{ edu.end_date }}</span>
+                                            {% else %}
+                                                <span class="time open-sans-font text-uppercase">{{ edu.start_date }}  - Present </span>
+                                            {%endif%}
+                                        
+                                            <h5 class="poppins-font text-uppercase">{{edu.name}}<span class="place open-sans-font">{{edu.school}}</span></h5>
+                                            <p class="open-sans-font">{{edu.description}}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Experience & Education Ends -->
+                </div>
+            </section>
+            <!-- Main Content Ends -->
+        {% endblock content %}
+
+        <!-- Template JS Files -->
+        <script src="{% static 'js/jquery-3.5.0.min.js' %} "></script>
+        <script src="{% static 'js/preloader.min.js' %}"></script>
+        <script src="{% static 'js/fm.revealator.jquery.min.js' %}"></script>
+        <script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/classie.js' %}"></script>
+        <script src="{% static 'js/cbpGridGallery.js' %}"></script>
+        <script src="{% static 'js/jquery.hoverdir.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>
