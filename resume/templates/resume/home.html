@@ -52,7 +52,7 @@ Home | Bukhosi Moyo Portfolio
                     <li class="active"><a href="{% url 'resume:home' %}"><i class="fa fa-home"></i><span>Home</span></a></li>
                     <li><a href="{% url 'resume:about' %}"><i class="fa fa-user"></i><span>About</span></a></li>
                     <li><a href="{% url 'resume:portfolio' %}"><i class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
-                    <li><a href="blog.html"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                    <li><a href="{% url 'blog' %}"><i class="fa fa-comments"></i><span>Blog</span></a></li>
                     <li><a href="{% url 'resume:contact' %}"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
                     
                 </ul>
@@ -65,10 +65,10 @@ Home | Bukhosi Moyo Portfolio
     <section class="container-fluid main-container container-home p-0 revealator-slideup revealator-once revealator-delay1">
         <div class="color-block d-none d-lg-block"></div>
         <div class="row home-details-container align-items-center">
-            <div class="col-lg-4 bg position-fixed d-none d-lg-block" style="background: url('{{persons.profilePicture.url}}'); background-size: cover"></div>
+            <div class="col-lg-4 bg position-fixed d-none d-lg-block" style="background: url('{{persons.profile_picture.url}}'); background-size: cover"></div>
             <div class="col-12 col-lg-8 offset-lg-4 home-details text-left text-sm-center text-lg-left">
                 <div class>
-                    <img src="{{ persons.profilePicture.url }}" class="img-fluid main-img-mobile d-none d-sm-block d-lg-none" alt="Bukhosi Moyo" />
+                    <img src="{{ persons.profile_picture.url }}" class="img-fluid main-img-mobile d-none d-sm-block d-lg-none" alt="Bukhosi Moyo" />
                     <h6 class="text-uppercase open-sans-font mb-0 d-block d-sm-none d-lg-block">hi there !</h6>
                     <h1 class="text-uppercase poppins-font"><span>I'm</span> {{persons.display_name}}</h1>
                     <p class="open-sans-font">{{ persons.description }}</p>

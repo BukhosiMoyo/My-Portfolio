@@ -18,7 +18,7 @@ class Person(models.Model):
     health = models.CharField(null=True, default='Excellent', max_length=50)
     phone = models.CharField(null=True, max_length=31)
     email = models.EmailField(null=True, max_length=200)
-    profilePicture = models.ImageField(upload_to="img")
+    profile_picture = models.ImageField(upload_to="img")
     address = models.CharField(null=True, max_length=200)
     nationality = models.CharField(null=True, max_length=50)
     religion = models.CharField(null=True, max_length=200)
