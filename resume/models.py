@@ -15,10 +15,10 @@ class Person(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     display_name = models.CharField(null=True, max_length=50)
     age = models.IntegerField(null= True)
-    health = models.CharField(null=True, default='ok', max_length=50)
+    health = models.CharField(null=True, default='Excellent', max_length=50)
     phone = models.CharField(null=True, max_length=31)
     email = models.EmailField(null=True, max_length=200)
-    profilePicture = models.ImageField(upload_to="img/profile")
+    profilePicture = models.ImageField(upload_to="img")
     address = models.CharField(null=True, max_length=200)
     nationality = models.CharField(null=True, max_length=50)
     religion = models.CharField(null=True, max_length=200)
@@ -90,7 +90,7 @@ class ImagePortfolio(models.Model):
     client = models.CharField(null=True, max_length=150)
     technologies = models.CharField(null=True, max_length=150)
     preview_link = models.URLField(null=True, max_length=200)
-    portfolio_image = models.ImageField(null=True, upload_to="img/ImagePortfolio", default="placeholder.png")
+    portfolio_image = models.ImageField(null=True, upload_to="img", default="placeholder.png")
 
     def __str__(self):
         return self.project_name
@@ -118,7 +118,7 @@ class LocalVideoPortfolio(models.Model):
     technologies = models.CharField(null=True, max_length=150)
     video_file = models.FileField(upload_to='static/LocalVideos', max_length=100)
     preview_link = models.URLField(null=True, max_length=200)
-    preview_image = models.ImageField(null=True, upload_to="img/LocalVideoImage",)
+    preview_image = models.ImageField(null=True, upload_to="video/LocalVideoImage",)
 
     def __str__(self):
         return self.project_name
