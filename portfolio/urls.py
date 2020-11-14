@@ -8,7 +8,7 @@ urlpatterns = [
     path('', include("resume.urls", namespace='resume')),
     path('superuser/', include('django.contrib.auth.urls')),
     path('superuser/login', include("login.urls")),
-    path('', include("blog.urls")),
+    path('', include("blog.urls", namespace='blog')),
     
 ] 
 

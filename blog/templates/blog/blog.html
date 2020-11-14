@@ -58,7 +58,7 @@
                             </li>
                             <li class="icon-box active">
                                 <i class="fa fa-comments"></i>
-                                <a href="{% url 'blog' %}">
+                                <a href="{% url 'blog:blog' %}">
                                     <h2>Blog</h2>
                                 </a>
                             </li>
@@ -81,7 +81,7 @@
                                 <li><a href="{% url 'resume:home' %}"><i class="fa fa-home"></i><span>Home</span></a></li>
                                 <li><a href="{% url 'resume:about' %}"><i class="fa fa-user"></i><span>About</span></a></li>
                                 <li><a href="{% url 'resume:portfolio' %}"><i class="fa fa-folder-open"></i><span>Portfolio</span></a></li>
-                                <li class="active"><a href="{% url 'blog' %}"><i class="fa fa-comments"></i><span>Blog</span></a></li>
+                                <li class="active"><a href="{% url 'blog:blog' %}"><i class="fa fa-comments"></i><span>Blog</span></a></li>
                                 <li><a href="{% url 'resume:contact' %}"><i class="fa fa-envelope-open"></i><span>Contact</span></a></li>
                             </ul>
                         </div>
@@ -102,20 +102,20 @@
                         <div class="row">
                             <!-- Article Starts -->
                             {% for post in object_list %}
-                                <div class="col-12 col-md-6 col-lg-6 mb-30 " style="flex-wrap: wrap; flex: initial; ">
+                                <div class="col-12 col-md-6 col-lg-6 mb-30 ">
                                     <article class="post-container">
-                                        <div class="post-thumb">
-                                            <a href="{% url 'category' post.category %}" class="card-post__category badge badge-pill badge-primary">{{post.category}}</a>
-                                            <a href="{% url 'article' post.pk %}" class="d-block position-relative overflow-hidden">
+                                        <div class="post-thumb" >
+                                            <a href="{% url 'blog:category' post.category %}" class="card-post__category badge badge-pill badge-primary">{{post.category}}</a>
+                                            <a href="{% url 'blog:article' post.pk %}" class="d-block position-relative overflow-hidden">
                                                 <img src="{{post.PreviewImage.url}}" class="img-fluid" alt="Blog Post" style="width: 100%; height:250px; object-fit: cover ">
                                             </a>
                                         </div>
                                         <div class="post-content ">
                                             <div class="entry-header">
-                                                <h3><a href="{% url 'article' post.pk %}">{{post.title}}</a></h3>
+                                                <h3><a href="{% url 'blog:article' post.pk %}">{{post.title}}</a></h3>
                                             </div>
                                             <div class="entry-content open-sans-font ">
-                                                <p>{{post.body|slice:':160'|safe}}... <strong> <a href="{% url 'article' post.pk %}">[Readmore]</a> </strong>
+                                                <p>{{post.body|slice:':160'|safe}}... <strong> <a href="{% url 'blog:article' post.pk %}">[Readmore]</a> </strong>
                                                 </p>
                                             </div>
                                             <hr>

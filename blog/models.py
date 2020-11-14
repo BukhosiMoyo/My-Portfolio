@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import  User
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class PublishedManager(models.Manager):
@@ -14,7 +15,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("update-post-list")
+        return reverse("blog:update-post-list")
     
 
 
@@ -30,7 +31,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=250)
     PreviewImage = models.ImageField(upload_to='PostImage')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
+    body = RichTextField(null=True, blank=True)
+    #body = models.TextField()
     publish_date = models.DateField(auto_now_add=True)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
@@ -43,7 +45,7 @@ class Post(models.Model):
         return self.title + " | " + str(self.author)
 
     def get_absolute_url(self):
-        return reverse("update-post-list")
+        return reverse("blog:update-post-list")
     
 
     

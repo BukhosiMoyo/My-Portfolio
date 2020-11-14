@@ -4,17 +4,16 @@ from .models import Post, Category
 from .forms import PostForm, EditPostForm
 from django.urls import reverse_lazy
 
-#def blog(request):
 
-#    context={}
-#    return render(request, 'blog/blog.html', context)
-
+##################################################BlogViews################################################
+#This view will show all the blogs we have published.
 class BlogView(ListView): 
     queryset = Post.published.all()
     model = Post
     template_name = "blog/blog.html"
     ordering = ['-publish_date']
 
+#This view will show all our posts within a certain category
 def CategoryView(request, cat):
     category_posts = Post.objects.filter(category=cat.replace('-', ' '))
 
@@ -22,16 +21,12 @@ def CategoryView(request, cat):
 
     return render(request, 'blog/categories.html', context)
 
-
+#This will be the article view where we can read a full blog post.
 class ArticleDetailView(DetailView):
     model = Post
     template_name = "blog/article_detail.html"
 
-class DashboardCreateView(ListView):
-    model = Post
-    fields = '__all__'
-    template_name = "blog/dashboard.html"
-
+#This is where we will have our portfolio edit 
 class PortfolioEdit(CreateView):
     model = Post
     fields = '__all__'
@@ -50,12 +45,19 @@ class AddCategory(CreateView):
     fields = '__all__'
     template_name = "blog/add-category.html"
 
+def listcategory(request):
+    cat_list = Category.objects.all()
+
+    context = {'cat_list':cat_list}
+
+    return render(request, "blog/add-category.html", context)
+
 
 class EditPostView(UpdateView):
     model = Post
     form_class = EditPostForm
     template_name = "blog/edit-post.html"
-    #fields = ['title', 'PreviewImage', 'body']
+    #fields = ['title', 'preview_image', 'body']
 
 class UpdatePostListView(ListView):
     model = Post
@@ -74,6 +76,12 @@ class PreviewDetailView(DetailView):
     model = Post
     template_name = "blog/preview.html"
 
+
+def thedashboard(request):
+    post_count = Post.objects.all().count()
+
+    context={'post_count':post_count, }
+    return render(request, "blog/dashboard.html", context)
 
 
 
