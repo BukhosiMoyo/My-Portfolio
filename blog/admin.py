@@ -5,9 +5,8 @@ from .models import Post, Category
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'author', 'status')
-    prepopulated_fields = {'slug': ('title',)}
-    ordering = ('status', 'publish_date')
+    list_display = ('title', 'author', 'status')
+    ordering = ('status', 'publish')
     raw_id_fields = ('author',)
 
 
